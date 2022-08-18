@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-sm-12 mb-3">
+      <h4 class="text-center"> Welcome {{ user.get_username }} </h4>
+  </div>
+
+  <div class="col-md-6 text-center">
+    <img src="{{user.socialaccount_set.all.0.extra_data.picture.data.url}}" alt="" width="150" height="150" style="border-radius: 50%">
+  </div>
+  <div class="col-md-6 social-container my-2">
+    <p> You're Signed in via {{ user.socialaccount_set.all.0.provider }} </p>
+    <p> Your Name:  {{ user.socialaccount_set.all.0.extra_data.name }} </p>
+  </div>
+
+
+  <div class="col-sm-12 mt-2 text-center">
+    <button class="btn btn-danger">
+      <a href="{% url 'logout' %}">Logout</a>
+    </button>
+  </div>
+
+</div>
+{% endblock %}
