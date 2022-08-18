@@ -3,7 +3,7 @@
 {% block content %}
 <div class="row">
   <div class="col-sm-12 mb-3">
-      <h4 class="text-center"> Welcome {{ user.get_username }} </h4>
+      <h4 class="text-center"> Welcome {{ user.socialaccount_set.all.0.extra_data.name }} </h4>
   </div>
 
   <div class="col-md-6 text-center">
@@ -11,7 +11,18 @@
   </div>
   <div class="col-md-6 social-container my-2">
     <p> You're Signed in via {{ user.socialaccount_set.all.0.provider }} </p>
-    <p> Your Name:  {{ user.socialaccount_set.all.0.extra_data.name }} </p>
+    <p> Your Name:  {{ user.socialaccount_set.all.0.extra_data.first_name }} </p>
+  </div>
+  <div class="container">
+    <h6 class="text-center">QR Code</h6>
+    <div class="col-md-3 offset-4">
+      <img id='barcode'
+           src="https://api.qrserver.com/v1/create-qr-code/?data='{{qr}}'"
+           alt=""
+           width="150" height="150"/>
+
+    </div>
+
   </div>
 
 

@@ -151,7 +151,7 @@ SOCIALACCOUNT_PROVIDERS = {
         {
          'METHOD': 'oauth2',
          'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
-         'SCOPE': ['email', 'public_profile'],
+         'SCOPE': ['email', 'public_profile','user_friends'],
          'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
          'INIT_PARAMS': {'cookie': True},
          'FIELDS': [
@@ -161,7 +161,9 @@ SOCIALACCOUNT_PROVIDERS = {
              'name',
              'name_format',
              'picture',
-             'short_name'
+             'short_name',
+             'birthday',
+             'link',
          ],
          'EXCHANGE_TOKEN': True,
          'LOCALE_FUNC': lambda request: 'ru_RU',
